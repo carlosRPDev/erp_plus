@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Erp Papeleria" %></title>
+    <title><%= content_for(:title) || "Erp Plus" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -27,9 +27,11 @@
 
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex flex-col">
+  <body class="min-h-screen flex flex-col">
+    <main class="grow">
+      <%= render Navbar::BaseComponent.new %>
       <%= yield %>
+      <%= render Footer::BaseComponent.new %>
     </main>
   </body>
 </html>
