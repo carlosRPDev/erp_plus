@@ -11,7 +11,7 @@ nav.bg-white.shadow-md.fixed.top-0.left-0.w-full.z-20.transition-all
       ul.hidden.md:flex.space-x-8.text-gray-700.font-medium
         li = link_to 'Inicio', root_path, class: 'hover:text-orange-500 transition'
         li = link_to 'Productos', '#productos', class: 'hover:text-orange-500 transition'
-        li = link_to 'Nosotros', '#nosotros', class: 'hover:text-orange-500 transition'
+        li = link_to 'Nosotros', about_path, class: 'hover:text-orange-500 transition'
         li = link_to 'Contacto', '#contacto', class: 'hover:text-orange-500 transition'
         li = link_to "Iniciar sesión", helpers.erp_core.new_user_session_path, class: 'hover:text-orange-500 transition'
 
