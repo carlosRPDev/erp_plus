@@ -1,3 +1,6 @@
 [submodule "engines/erp_users"]
 	path = engines/erp_users
 	url = git@github.com:carlosRPDev/erp_users.git
+[submodule "engines/erp_core"]
+	path = engines/erp_core
+	url = git@github.com:carlosRPDev/erp_core.git

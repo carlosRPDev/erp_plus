@@ -1,0 +1,14 @@
+section.bg-gray-50.pt-28.md:pt-32.pb-16.mb-8 data-controller="hero"
+  .container.mx-auto.flex.flex-col.md:flex-row.items-center.px-6.gap-10
+    .w-full.md:w-1/2.space-y-6.text-center.md:text-left data-hero-target="text"
+      h1.text-4xl.md:text-5xl.font-extrabold.text-gray-800.leading-tight
+        | Gestiona tu negocio con 
+        span.text-orange-500 ERP+
+      p.text-gray-600.text-lg
+        | Administra ventas, inventario y clientes desde un solo lugar.
+      .flex.flex-col.md:flex-row.justify-center.md:justify-start.gap-4 data-hero-target="links"
+        = link_to 'Comenzar ahora', '#', class: 'bg-orange-500 text-white px-6 py-3 rounded-xl shadow hover:bg-orange-600 transition font-semibold'
+        = link_to 'Ver demo', '#', class: 'border border-orange-500 text-orange-500 px-6 py-3 rounded-xl hover:bg-orange-50 transition font-semibold'
+
+    .w-full.md:w-1/2.flex.justify-center data-hero-target="image"
+      = image_tag src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQi-fOrq_PfqnpcegTjYW1EpMY07njdTbssiX2WU-OqGe4fZuz1GnUMi9kwbCmFSZ165hw&usqp=CAU', alt: 'Vista ERP', class: 'w-4/5 rounded-2xl shadow-lg hover:shadow-2xl transition'

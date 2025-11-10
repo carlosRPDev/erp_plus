@@ -1,4 +1,11 @@
 PATH
+  remote: engines/erp_core
+  specs:
+    erp_core (0.1.0)
+      devise
+      rails (>= 8.0.4)
+
+PATH
   remote: engines/erp_users
   specs:
     erp_users (0.1.0)
@@ -492,6 +499,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  erp_core!
   erp_users!
   factory_bot_rails
   hotwire-livereload

@@ -80,3 +80,4 @@ group :test do
 end
 
 gem "erp_users", path: "engines/erp_users"
+gem "erp_core", path: "engines/erp_core"

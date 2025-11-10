@@ -1,0 +1,28 @@
+body.min-h-screen.flex.flex-col
+  main.flex-grow
+    = render Navbar::BaseComponent.new
+    = render Hero::BaseComponent.new
+
+    - features = []
+    - features << { icon: 'fa-box', title: 'Administrar inventario', desc: 'Registrar productos, stock, entradas y salidas, alertas de stock mínimo.' }
+    - features << { icon: 'fa-cash-register', title: 'Ventas', desc: 'Registrar ventas por cliente, tickets/facturas, métodos de pago y reportes de ventas.' }
+    - features << { icon: 'fa-truck', title: 'Compras y proveedores', desc: 'Registrar compras de productos, precios de adquisición, proveedores y comparación de precios.' }
+    - features << { icon: 'fa-tags', title: 'Productos y precios', desc: 'Gestionar catálogo de productos, calcular márgenes y sugerir precios de venta según costo.' }
+    - features << { icon: 'fa-chart-line', title: 'Reportes y métricas', desc: 'Productos más vendidos, menos vendidos, ventas por fecha, margen de ganancia, inventario disponible.' }
+    - features << { icon: 'fa-users-cog', title: 'Usuarios y roles', desc: 'Control de acceso: administrador, cajero, encargado de inventario, etc.' }
+    - features << { icon: 'fa-cogs', title: 'Configuración', desc: 'Tipos de impuestos, monedas, locales/tiendas, categorías de productos.' }
+    - features << { icon: 'fa-handshake', title: 'CRM básico (opcional)', desc: 'Seguimiento de clientes frecuentes, historial de compras y promociones.' }
+    - features << { icon: 'fa-bell', title: 'Alertas y notificaciones (opcional)', desc: 'Notificaciones por stock bajo o ventas importantes.' }
+
+    = render Features::BaseComponent.new(features: features)
+
+    - plans = []
+    - plans << { title: "Básico", description: "Ideal para empezar con tu papelería", price: "$20.000/mes", features: ["Registrar productos", "Control de inventario básico"], cta_text: "Comenzar", cta_link: "#", highlight: false }
+    - plans << { title: "Premium", description: "Todo lo que necesitas para tu negocio", price: "$79.000/mes", features: ["Todo lo del plan básico*", "Todo lo del plan profesional*","Inventario avanzado", "Reportes de ventas", "Gestión de clientes", "Alertas y notificaciones"], cta_text: "Probar ahora", cta_link: "#", highlight: true }
+    - plans << { title: "Profesional", description: "Para grandes papelerías y franquicias", price: "$74.000/mes", features: ["Multi-sucursal", "Gestión de usuarios y roles", "Reportes avanzados"], cta_text: "Comenzar", cta_link: "#", highlight: false }
+
+    = render Pricing::BaseComponent.new(plans: plans)
+
+    = render Cta::BaseComponent.new(primary_url: "#", secondary_url: "#")
+    
+  = render Footer::BaseComponent.new
