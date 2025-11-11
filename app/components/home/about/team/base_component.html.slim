@@ -1,10 +1,10 @@
-section[class="bg-white py-16"]
+section[class="bg-white py-16" data-controller="animate"]
   div[class="container mx-auto px-6 text-center"]
     h2[class="text-3xl font-bold text-gray-800 mb-10"] Nuestro Equipo
 
     div[class="flex flex-wrap gap-8 justify-center" class=@grid_cols]
       - team_members.each do |member|
-        div[class="bg-gray-50 rounded-2xl p-6 shadow-md hover:shadow-lg transition w-64"]
+        div[class="bg-gray-50 rounded-2xl shadow-sm transform transition-all duration-500 opacity-0 translate-y-10 hover:scale-105 hover:shadow-lg p-8 flex flex-col items-center text-center" data-animate-target="target"]
           img[class="rounded-full w-32 h-32 mx-auto mb-4 object-cover" src=member[:image] alt=member[:name]]
           h3[class="text-xl font-bold text-gray-800"] = member[:name]
           p[class="text-orange-500 font-medium"] = member[:role]
