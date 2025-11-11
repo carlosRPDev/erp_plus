@@ -29,9 +29,9 @@
 
   <body class="min-h-screen flex flex-col">
     <main class="grow">
-      <%= render Navbar::BaseComponent.new %>
+      <%= render Ui::Navbar::BaseComponent.new %>
       <%= yield %>
-      <%= render Footer::BaseComponent.new %>
+      <%= render Ui::Footer::BaseComponent.new %>
     </main>
   </body>
 </html>
