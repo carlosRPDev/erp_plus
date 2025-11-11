@@ -1,16 +1,16 @@
-section.bg-gray-50.py-20#planes data-controller="animate"
-  .container.mx-auto.px-6
-    h2.text-3xl.font-bold.text-center.text-gray-800.my-12
+section[class="bg-gray-50 py-20" id="planes" data-controller="animate"]
+  div[class="container mx-auto px-6"]
+    h2[class="text-3xl font-bold text-center text-gray-800 my-12"]
       | Nuestros planes
 
-    .grid.gap-6.grid-cols-1.sm:grid-cols-2.lg:grid-cols-3
+    div[class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"]
       - @plans.each do |plan|
-        .bg-white.rounded-2xl.shadow-sm.transform.transition-all.duration-500.opacity-0.translate-y-10.hover:scale-105.hover:shadow-lg.p-10.flex.flex-col.text-center.justify-between data-animate-target="target"
-          h3.text-2xl.font-bold.mb-4 = plan[:title]
-          p.text-gray-600.mb-6 = plan[:description]
-          span.text-3xl.font-extrabold.mb-6 = plan[:price]
-          ul.mb-6.space-y-2
+        div[class="bg-white rounded-2xl shadow-sm transform transition-all duration-500 opacity-0 translate-y-10 hover:scale-105 hover:shadow-lg p-10 flex flex-col text-center justify-between" data-animate-target="target"]
+          h3[class="text-2xl font-bold mb-4"] = plan[:title]
+          p[class="text-gray-600 mb-6"] = plan[:description]
+          span[class="text-3xl font-extrabold mb-6"] = plan[:price]
+          ul[class="mb-6 space-y-2"]
             - plan[:features].each do |feature|
-              li.text-gray-700 = "• #{feature}"
+              li[class="text-gray-700"] = "• #{feature}"
           = link_to plan[:cta_text], plan[:cta_link], class: "mt-auto bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-xl transition"
 

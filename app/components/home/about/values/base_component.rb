@@ -4,6 +4,8 @@ class Home::About::Values::BaseComponent < ViewComponent::Base
   def initialize(alternate: true)
     @alternate = alternate
   end
+  
+  private
 
   def values
     [
