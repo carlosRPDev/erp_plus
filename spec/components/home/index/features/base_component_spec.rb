@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Cta::BaseComponent, type: :component do
+RSpec.describe Home::Index::Features::BaseComponent, type: :component do
   pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do

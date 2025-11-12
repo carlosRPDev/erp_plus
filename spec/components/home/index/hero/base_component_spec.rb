@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Hero::BaseComponent, type: :component do
+RSpec.describe Home::Index::Hero::BaseComponent, type: :component do
   pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do

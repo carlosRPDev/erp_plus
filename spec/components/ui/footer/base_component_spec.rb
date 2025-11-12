@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe Footer::BaseComponent, type: :component do
+RSpec.describe Ui::Footer::BaseComponent, type: :component do
   pending "add some examples to (or delete) #{__FILE__}"
 
   # it "renders something useful" do
