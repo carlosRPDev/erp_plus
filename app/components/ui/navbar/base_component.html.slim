@@ -23,6 +23,6 @@ nav.bg-white.shadow-md.fixed.top-0.left-0.w-full.z-20.transition-all
       ul#mobile-menu.hidden.space-y-4.md:hidden data-menu-target="menu"
         li = link_to 'Inicio', root_path, class: 'block hover:text-orange-500 transition'
         li = link_to 'Productos', '#productos', class: 'block hover:text-orange-500 transition'
-        li = link_to 'Nosotros', '#nosotros', class: 'block hover:text-orange-500 transition'
+        li = link_to 'Nosotros', about_path, class: 'block hover:text-orange-500 transition'
         li = link_to 'Contacto', '#contacto', class: 'block hover:text-orange-500 transition'
         li = link_to "Iniciar sesión", helpers.erp_core.new_user_session_path, class: 'block hover:text-orange-500 transition'
