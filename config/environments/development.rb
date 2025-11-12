@@ -74,4 +74,6 @@ Rails.application.configure do
   Dir[Rails.root.join("engines/*/app/{views,assets,javascript,controllers}")].each do |engine_path|
     config.hotwire_livereload.listen_paths << engine_path
   end
+
+  config.hosts << /[a-z0-9\-]+\.ngrok\-free\.app/
 end

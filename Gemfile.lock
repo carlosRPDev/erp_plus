@@ -4,6 +4,7 @@ PATH
     erp_core (0.1.0)
       devise
       rails (>= 8.0.4)
+      view_component
 
 PATH
   remote: engines/erp_users

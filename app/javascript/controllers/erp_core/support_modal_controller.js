@@ -8,20 +8,24 @@ export default class extends Controller {
   }
 
   open() {
-    console.log("🟠 Abriendo modal")
-    this.overlayTarget.classList.remove("hidden")
+    const overlay = document.querySelector('[data-erp-core--support-modal-target="overlay"]')
+    const modal = document.querySelector('[data-erp-core--support-modal-target="modal"]')
+    if (!overlay || !modal) return console.error("No se encontró modal")
+
+    overlay.classList.remove("hidden")
     setTimeout(() => {
-      this.modalTarget.classList.remove("opacity-0", "scale-95")
-      this.modalTarget.classList.add("opacity-100", "scale-100")
+      modal.classList.remove("opacity-0", "scale-95")
+      modal.classList.add("opacity-100", "scale-100")
     }, 10)
   }
 
   close() {
-    console.log("🔵 Cerrando modal")
-    this.modalTarget.classList.remove("opacity-100", "scale-100")
-    this.modalTarget.classList.add("opacity-0", "scale-95")
-    setTimeout(() => {
-      this.overlayTarget.classList.add("hidden")
-    }, 200)
+    const overlay = document.querySelector('[data-erp-core--support-modal-target="overlay"]')
+    const modal = document.querySelector('[data-erp-core--support-modal-target="modal"]')
+    if (!overlay || !modal) return console.error("No se encontró modal")
+
+    modal.classList.remove("opacity-100", "scale-100")
+    modal.classList.add("opacity-0", "scale-95")
+    setTimeout(() => overlay.classList.add("hidden"), 200)
   }
 }
