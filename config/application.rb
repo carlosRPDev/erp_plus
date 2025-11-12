@@ -25,6 +25,9 @@ module ErpPlus
     # config.eager_load_paths << Rails.root.join("extras")
     #
 
+    config.i18n.default_locale = :es
+    config.i18n.available_locales = [ :en, :es ]
+
     config.generators do |g|
       g.template_engine :slim
       g.test_framework  :rspec, fixture: true
