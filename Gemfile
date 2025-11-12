@@ -44,7 +44,7 @@ gem "thruster", require: false
 # gem "image_processing", "~> 1.2"
 
 # View components and templates
-gem "view_component", "~> 3.0"
+gem "view_component", "~> 4.1"
 gem "slim-rails"           # usar Slim en vez de ERB
 
 # Authentication
