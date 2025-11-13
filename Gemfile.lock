@@ -137,6 +137,8 @@ GEM
     factory_bot_rails (6.5.1)
       factory_bot (~> 6.5)
       railties (>= 6.1.0)
+    faker (3.5.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -476,6 +478,7 @@ DEPENDENCIES
   erp_core!
   erp_users!
   factory_bot_rails
+  faker
   hotwire-livereload
   html2slim
   importmap-rails
