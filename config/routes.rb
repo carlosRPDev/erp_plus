@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: "home#index"
   get "about", to: "home#about"
+  root to: "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,5 +12,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   mount ErpUsers::Engine, at: "/users_module"
-  mount ErpCore::Engine, at: "/core"
+  mount ErpCore::Engine, at: "/"
 end

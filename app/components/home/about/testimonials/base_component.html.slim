@@ -16,3 +16,9 @@ section[class="bg-white py-16 relative overflow-hidden"]
               img class="rounded-full w-20 h-20 mb-4 object-cover" src=t[:image] alt=t[:name]
               p class="text-gray-600 mb-4 text-center italic" = "\"#{t[:quote]}\""
               span class="text-orange-500 font-semibold" = t[:name]
+          
+          - testimonials.each do |t|
+            div class="testimonial-card min-w-[20rem] max-w-xs bg-gray-50 rounded-2xl p-6 shadow-md flex flex-col items-center"
+              img class="rounded-full w-20 h-20 mb-4 object-cover" src=t[:image] alt=t[:name]
+              p class="text-gray-600 mb-4 text-center italic" = "\"#{t[:quote]}\""
+              span class="text-orange-500 font-semibold" = t[:name]
