@@ -12,7 +12,7 @@ nav class="navbar-ios backdrop-blur-sm bg-white/70 border-b border-white/20 shad
         li = link_to 'Productos', '#productos', class: 'hover:text-orange-300 text-orange-400 transition-all duration-200'
         li = link_to 'Nosotros', about_path, class: 'hover:text-orange-300 text-orange-400 transition-all duration-200'
         li = link_to 'Contacto', '#contacto', class: 'hover:text-orange-300 text-orange-400 transition-all duration-200'        
-        li = link_to "Iniciar sesión", helpers.erp_core.new_user_session_path, class: "px-4 py-2 rounded-2xl font-medium text-orange-500 bg-white/40 backdrop-blur-2xl border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:bg-white/20 hover:border-white-400/80 transition-all duration-300"
+        li = link_to "Iniciar sesión", ErpCore::Engine.routes.url_helpers.new_user_session_path, class: "px-4 py-2 rounded-2xl font-medium text-orange-500 bg-white/40 backdrop-blur-2xl border border-white/40 shadow-[0_8px_30px_rgba(0,0,0,0.1)] hover:bg-white/20 hover:border-white-400/80 transition-all duration-300"
       
       / Mobile button
       button#menu-btn.md:hidden.text-orange-600.dark:text-orange-500.text-3xl.focus:outline-none data-action="click->menu#toggle"
@@ -24,4 +24,4 @@ nav class="navbar-ios backdrop-blur-sm bg-white/70 border-b border-white/20 shad
         li = link_to 'Productos', '#productos', class: 'block text-orange-600 transition'
         li = link_to 'Nosotros', about_path, class: 'block text-orange-600 transition'
         li = link_to 'Contacto', '#contacto', class: 'block text-orange-600 transition'
-        li = link_to "Iniciar sesión", helpers.erp_core.new_user_session_path, class: 'block text-orange-600 transition'
+        li = link_to "Iniciar sesión", ErpCore::Engine.routes.url_helpers.new_user_session_path, class: 'block text-orange-600 transition'
