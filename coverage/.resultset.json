@@ -78,6 +78,47 @@
           null
         ]
       },
+      "/Users/carlosrodriguez/Desktop/erp_plus/engines/erp_core/app/components/erp_core/ui/flash_messages/base_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          4,
+          4,
+          null,
+          null,
+          1,
+          12,
+          null,
+          4,
+          null,
+          4,
+          null,
+          4,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/carlosrodriguez/Desktop/erp_plus/engines/erp_core/app/components/erp_core/ui/modal/recovery/base_component.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/carlosrodriguez/Desktop/erp_plus/engines/erp_core/app/models/erp_core/admin.rb": {
         "lines": [
           1,
@@ -261,6 +302,6 @@
         ]
       }
     },
-    "timestamp": 1763537295
+    "timestamp": 1763568182
   }
 }
