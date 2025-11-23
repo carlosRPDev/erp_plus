@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_11_18_004638) do
+ActiveRecord::Schema[8.0].define(version: 2025_11_23_050623) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -61,6 +61,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_18_004638) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "erp_core_accounts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "subdomain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subdomain"], name: "index_erp_core_accounts_on_subdomain", unique: true
+  end
+
   create_table "erp_core_admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -71,6 +79,55 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_18_004638) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_erp_core_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_erp_core_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "erp_core_permissions", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_erp_core_permissions_on_name", unique: true
+  end
+
+  create_table "erp_core_role_permissions", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "permission_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["permission_id"], name: "index_erp_core_role_permissions_on_permission_id"
+    t.index ["role_id", "permission_id"], name: "index_erp_core_role_permissions_on_role_and_permission", unique: true
+    t.index ["role_id"], name: "index_erp_core_role_permissions_on_role_id"
+  end
+
+  create_table "erp_core_roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "account_id"], name: "index_erp_core_roles_on_name_and_account", unique: true
+  end
+
+  create_table "erp_core_user_accounts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
+    t.boolean "owner", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_erp_core_user_accounts_on_account_id"
+    t.index ["user_id", "account_id"], name: "index_erp_core_user_accounts_on_user_and_account", unique: true
+    t.index ["user_id"], name: "index_erp_core_user_accounts_on_user_id"
+  end
+
+  create_table "erp_core_user_roles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "role_id", null: false
+    t.bigint "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_erp_core_user_roles_on_role_id"
+    t.index ["user_id", "role_id", "account_id"], name: "index_erp_core_user_roles_on_user_role_account", unique: true
+    t.index ["user_id"], name: "index_erp_core_user_roles_on_user_id"
   end
 
   create_table "erp_core_users", force: :cascade do |t|
@@ -92,4 +149,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_11_18_004638) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "erp_core_role_permissions", "erp_core_permissions", column: "permission_id"
+  add_foreign_key "erp_core_role_permissions", "erp_core_roles", column: "role_id"
+  add_foreign_key "erp_core_user_accounts", "erp_core_accounts", column: "account_id"
+  add_foreign_key "erp_core_user_accounts", "erp_core_users", column: "user_id"
+  add_foreign_key "erp_core_user_roles", "erp_core_roles", column: "role_id"
+  add_foreign_key "erp_core_user_roles", "erp_core_users", column: "user_id"
 end
