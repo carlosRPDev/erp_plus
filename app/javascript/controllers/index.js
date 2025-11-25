@@ -2,6 +2,3 @@
 import { application } from "controllers/application"
 import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
 eagerLoadControllersFrom("controllers", application)
-
-lazyLoadControllersFrom("controllers/erp_core", application)
-lazyLoadControllersFrom("controllers/erp_users", application)
