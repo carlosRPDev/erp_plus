@@ -11,6 +11,6 @@ RSpec.describe "User Login", type: :system do
       message: "Ingresó a Erp+ Clientes con éxito."
     )
 
-    expect(page).to have_current_path("/dashboard", ignore_query: true)
+    expect(page).to have_current_path("/clients/home", ignore_query: true)
   end
 end

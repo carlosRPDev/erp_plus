@@ -10,7 +10,7 @@ RSpec.describe Home::About::Team::BaseComponent, type: :component do
 
       expect(members).to be_an(Array)
       expect(members.first[:name]).to eq("Carlos Rodríguez")
-      expect(members.first[:role]).to eq("Fundador & CTO")
+      expect(members.first[:role]).to eq("CoFundador & CTO")
       expect(members.first[:image]).to be_present
     end
   end

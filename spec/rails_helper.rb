@@ -82,6 +82,12 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # ===========================
+# 🔧 configuracion para usar assing
+# ===========================
+require "rails-controller-testing"
+Rails::Controller::Testing.install
+
+# ===========================
 # 🔧 Soporte adicional
 # ===========================
 # Requiere automáticamente archivos en spec/support
@@ -90,7 +96,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # ===========================
 # 🧬 Cargar specs de todos los engines
 # ===========================
-Dir[Rails.root.join("engines/*/spec/**/*_spec.rb")].each { |f| require f }
+Dir[Rails.root.join("engines/*/spec/**/**//**/*_spec.rb")].each { |f| require f }
 
 # ===========================
 # 🧪 Configuración RSpec
