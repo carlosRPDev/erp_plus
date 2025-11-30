@@ -13,6 +13,13 @@ PATH
       rails (>= 8.0.4)
       view_component
 
+PATH
+  remote: engines/erp_workers
+  specs:
+    erp_workers (0.1.0)
+      rails (>= 8.0.4)
+      view_component
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -510,6 +517,7 @@ DEPENDENCIES
   devise
   erp_core!
   erp_users!
+  erp_workers!
   factory_bot_rails
   faker
   hotwire-livereload

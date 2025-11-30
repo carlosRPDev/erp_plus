@@ -89,3 +89,5 @@ end
 
 gem "erp_users", path: "engines/erp_users"
 gem "erp_core", path: "engines/erp_core"
+
+gem "erp_workers", path: "engines/erp_workers"

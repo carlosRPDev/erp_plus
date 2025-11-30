@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   mount ErpUsers::Engine, at: "/"
   mount ErpCore::Engine, at: "/"
+  mount ErpWorkers::Engine, at: "/"
 end
