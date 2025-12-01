@@ -1,4 +1,11 @@
 PATH
+  remote: engines/erp_accounts
+  specs:
+    erp_accounts (0.1.0)
+      rails (>= 8.0.4)
+      view_component
+
+PATH
   remote: engines/erp_core
   specs:
     erp_core (0.1.0)
@@ -515,6 +522,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  erp_accounts!
   erp_core!
   erp_users!
   erp_workers!

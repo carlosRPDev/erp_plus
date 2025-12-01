@@ -87,7 +87,7 @@ group :test do
   gem "rails-controller-testing"
 end
 
-gem "erp_users", path: "engines/erp_users"
 gem "erp_core", path: "engines/erp_core"
-
+gem "erp_users", path: "engines/erp_users"
 gem "erp_workers", path: "engines/erp_workers"
+gem "erp_accounts", path: "engines/erp_accounts"

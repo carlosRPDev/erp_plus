@@ -7,3 +7,6 @@
 [submodule "engines/erp_workers"]
 	path = engines/erp_workers
 	url = git@github.com:carlosRPDev/erp_workers.git
+[submodule "engines/erp_accounts"]
+	path = engines/erp_accounts
+	url = git@github.com:carlosRPDev/erp_accounts.git
