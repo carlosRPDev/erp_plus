@@ -101,4 +101,18 @@ Rails.application.configure do
   # Rails.application.config.after_initialize do
   #   ActionMailer::Base.register_observer(LetterOpener::MessageObserver)
   # end
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.rails_logger  = true
+    Bullet.add_footer    = true
+
+    # Opcional: abre ventana del navegador con alertas
+    # Bullet.alert = true
+
+    # Para pruebas de includes correctos
+    Bullet.n_plus_one_query_enable = true
+    Bullet.unused_eager_loading_enable = true
+    Bullet.counter_cache_enable = true
+  end
 end
