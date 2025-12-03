@@ -1,4 +1,3 @@
-// app/javascript/controllers/marquee_controller.js
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
@@ -7,7 +6,7 @@ export default class extends Controller {
   connect() {
     this.track = this.element
     this.paused = false
-    this.speed = 30 // px/seg
+    this.speed = 30
 
     this.prepareContent()
 
@@ -19,7 +18,6 @@ export default class extends Controller {
     this.track.addEventListener('mouseleave', () => (this.paused = false))
   }
 
-  // 🧩 NUEVO: duplicar items en el track
   prepareContent() {
     const items = Array.from(this.itemTargets)
 
@@ -64,10 +62,6 @@ export default class extends Controller {
 
   onResize() {
     cancelAnimationFrame(this.rafId)
-
-    // limpiar duplicados previos (opcional)
-    // ⚠️ Solo si tu contenido está generado en el servidor
-    // this.track.innerHTML = originalHTML
 
     this.prepareContent()
     this.start()

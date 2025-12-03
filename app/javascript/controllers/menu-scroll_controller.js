@@ -16,10 +16,8 @@ export default class extends Controller {
     const current = window.scrollY
 
     if (current > this.lastScroll && current > 20) {
-      // Scroll down → encoger navbar
       this.navTarget.classList.add("nav-mini")
     } else {
-      // Scroll up → restaurar
       this.navTarget.classList.remove("nav-mini")
     }
 

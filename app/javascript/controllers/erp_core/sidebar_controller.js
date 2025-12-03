@@ -8,10 +8,8 @@ export default class extends Controller {
   }
 
   connect() {
-    // Restaurar estado expandido/colapsado
     this.expanded = JSON.parse(localStorage.getItem("sidebar-expanded") ?? "true")
 
-    // Restaurar ítem activo guardado
     this.activeItem = localStorage.getItem("sidebar-active-item")
 
     this.applyState()
@@ -35,13 +33,11 @@ export default class extends Controller {
   toggle() {
     this.expanded = !this.expanded
 
-    // Guardar estado expandido
     localStorage.setItem("sidebar-expanded", JSON.stringify(this.expanded))
 
     this.applyState()
     this.iconTarget.classList.toggle("rotate-180")
 
-    // ➤ Emitir evento para actualizar el layout
     window.dispatchEvent(new CustomEvent("sidebar:state", {
       detail: { expanded: this.expanded }
     }))
@@ -53,7 +49,6 @@ export default class extends Controller {
       el.classList.add("opacity-100")
     })
 
-    // Íconos alineados a la izquierda cuando está expandido
     this.iconWrapperTargets.forEach(w => {
       w.classList.remove("justify-center")
       w.classList.add("justify-start")
@@ -66,7 +61,6 @@ export default class extends Controller {
       el.classList.remove("opacity-100")
     })
 
-    // Íconos centrados cuando está colapsado
     this.iconWrapperTargets.forEach(w => {
       w.classList.add("justify-center")
       w.classList.remove("justify-start")
@@ -75,27 +69,22 @@ export default class extends Controller {
 
 
   switch(event) {
-    // Eliminar color activo previo
     this.itemTargets.forEach(item => {
       item.classList.remove("text-orange-600", "font-semibold")
     })
 
-    // Agregar color al ítem clickeado
     event.currentTarget.classList.add("text-orange-600", "font-semibold")
 
-    // Guardarlo en localStorage
     localStorage.setItem("sidebar-active-item", event.currentTarget.href)
   }
 
   applyActiveItem() {
-    if (!this.activeItem) return
+    const rubyActive = this.itemTargets.find(item =>
+      item.classList.contains("text-orange-600")
+    )
 
-    this.itemTargets.forEach(item => {
-      if (item.href === this.activeItem) {
-        item.classList.add("text-orange-600", "font-semibold")
-      } else {
-        item.classList.remove("text-orange-600", "font-semibold")
-      }
-    })
+    if (!rubyActive) return
+
+    localStorage.setItem("sidebar-active-item", rubyActive.href)
   }
 }

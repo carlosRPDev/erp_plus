@@ -8,13 +8,11 @@ export default class extends Controller {
       (entries) => {
         entries.forEach((entry, index) => {
           if (entry.isIntersecting) {
-            // Animación al entrar
             setTimeout(() => {
               entry.target.classList.remove("opacity-0", "translate-y-10")
               entry.target.classList.add("opacity-100", "translate-y-0")
-            }, index * 150) // delay basado en índice
+            }, index * 150)
           } else {
-            // Animación al salir
             entry.target.classList.remove("opacity-100", "translate-y-0")
             entry.target.classList.add("opacity-0", "translate-y-10")
           }

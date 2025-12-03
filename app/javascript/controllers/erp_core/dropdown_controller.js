@@ -5,11 +5,10 @@ export default class extends Controller {
 
   connect() {
     document.addEventListener("click", this.hide.bind(this))
-    // 1️⃣ Leer estado inicial guardado por el sidebar
+
     const expanded = JSON.parse(localStorage.getItem("sidebar-expanded") ?? "true")
     this.updateNavbar(expanded)
 
-    // 2️⃣ Escuchar evento emitido por el sidebar
     window.addEventListener("sidebar:state", (e) => {
       this.updateNavbar(e.detail.expanded)
     })
@@ -25,17 +24,9 @@ export default class extends Controller {
     this.element.classList.add("transition-all", "duration-300", "ease-in-out")
 
     if (expanded) {
-      // Sidebar expandido (w-56)
-      this.element.classList.add("md:ml-56")
-      this.element.classList.remove("md:ml-20")
-
       this.element.classList.add("md:w-[calc(100%-14rem)]")
-      this.element.classList.remove("md:w-[calc(100%-5rem)]") // 20 = 5rem
+      this.element.classList.remove("md:w-[calc(100%-5rem)]")
     } else {
-      // Sidebar colapsado (w-20)
-      this.element.classList.add("md:ml-20")
-      this.element.classList.remove("md:ml-56")
-
       this.element.classList.add("md:w-[calc(100%-5rem)]")
       this.element.classList.remove("md:w-[calc(100%-14rem)]")
     }
