@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["label", "logo", "icon", "item", "iconWrapper"]
+  static targets = ["label", "logo", "icon", "item"]
   static values = {
     expandedClass: String,
     collapsedClass: String
@@ -45,25 +45,15 @@ export default class extends Controller {
 
   showLabels() {
     this.labelTargets.forEach(el => {
-      el.classList.remove("opacity-0", "pointer-events-none")
+      el.classList.remove("opacity-0", "pointer-events-none", "w-0")
       el.classList.add("opacity-100")
-    })
-
-    this.iconWrapperTargets.forEach(w => {
-      w.classList.remove("justify-center")
-      w.classList.add("justify-start")
     })
   }
 
   hideLabels() {
     this.labelTargets.forEach(el => {
-      el.classList.add("opacity-0", "pointer-events-none")
+      el.classList.add("opacity-0", "pointer-events-none", "w-0")
       el.classList.remove("opacity-100")
-    })
-
-    this.iconWrapperTargets.forEach(w => {
-      w.classList.add("justify-center")
-      w.classList.remove("justify-start")
     })
   }
 
