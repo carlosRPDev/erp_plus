@@ -8,6 +8,9 @@ class CreateErpCoreUserRoles < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :erp_core_user_roles, [:user_id, :role_id, :account_id], unique: true, name: "index_erp_core_user_roles_on_user_role_account"
+    add_index :erp_core_user_roles,
+              [:user_id, :role_id, :account_id],
+              unique: true,
+              name: "index_erp_core_user_roles_on_user_role_account"
   end
 end

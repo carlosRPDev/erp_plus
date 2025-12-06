@@ -6,22 +6,35 @@
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+
 # ============================================
 # RuboCop Config para Rails 8 + ViewComponent
 # Basado en Omakase + mejoras modernas
 # ============================================
 
-inherit_gem:
-  rubocop-rails-omakase: rubocop.yml
+# ============================================
+# RUBOCOP CONFIG PARA RAILS 8 + ENGINES
+# ============================================
+
+# Ignora configuraciones de RuboCop dentro de mini_mime
+inherit_gem: {}
 
 inherit_from:
   - .rubocop_todo.yml
 
+plugins:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-factory_bot
+
+# ============================================
+# ARCHIVOS GENERALES
+# ============================================
 AllCops:
+  UseCache: true
   NewCops: enable
   TargetRubyVersion: 3.3
   SuggestExtensions: false
-
   Exclude:
     - "bin/*"
     - "db/schema.rb"
@@ -31,42 +44,28 @@ AllCops:
     - "tmp/**/*"
     - "engines/**/node_modules/**/*"
     - "engines/**/tmp/**/*"
+    - "engines/**/vendor/**/*"
 
   DisplayStyleGuide: true
-
-# ============================================
-# SLIM
-# ============================================
-Slim/Literal:
-  Enabled: true
-
-Slim/Interpolation:
-  Enabled: true
-
-Slim/ControlStatementSpacing:
-  Enabled: true
 
 # ============================================
 # VIEW COMPONENTS
 # ============================================
 
-# Permite inicializadores con keyword args y opciones flexibles
-Style/OptionalBooleanParameter:
-  Enabled: false
-
-# Componentes suelen tener muchos métodos pequeños
 Metrics/ClassLength:
   Exclude:
     - "app/components/**/*"
 
-# Plantillas Slim no deben ser penalizadas por longitud
 Metrics/BlockLength:
   Exclude:
     - "app/components/**/*.html.slim"
     - "app/views/**/*.html.slim"
 
+Layout/LineLength:
+  Max: 120
+
 # ============================================
-# RAILS
+# RAILS MODERNOS (8, Hotwire, Solid, etc.)
 # ============================================
 
 Rails:
@@ -81,7 +80,6 @@ Rails/WhereExists:
 Rails/Blank:
   Enabled: true
 
-# Para Rails 8 + SolidQueue + ActiveJob modernos
 Rails/HasManyOrHasOneDependent:
   Enabled: true
 
@@ -92,18 +90,14 @@ Rails/OutputSafety:
   Enabled: true
 
 # ============================================
-# ESCRITURA MODERNA RUBY
+# RUBY MODERNO
 # ============================================
 
-# Permite métodos más largos cuando son componentes o helpers
 Metrics/MethodLength:
   Max: 25
 
 Metrics/AbcSize:
   Max: 50
-
-Layout/LineLength:
-  Max: 120
 
 Style/StringLiterals:
   EnforcedStyle: single_quotes
@@ -117,16 +111,14 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
-# Evita advertencias innecesarias en servicios y componentes
 Style/ClassAndModuleChildren:
   Enabled: false
 
-# Permite _ cuando es explícitamente útil
 Naming/MethodParameterName:
   Enabled: false
 
 # ============================================
-# TESTS (RSpec)
+# RSpec
 # ============================================
 
 RSpec:
@@ -141,12 +133,12 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 4
 
-# No queremos molestar por describe vacíos o temporales
 RSpec/EmptyExampleGroup:
   Enabled: false
 
 # ============================================
-# FACTORIES
+# FACTORY BOT
 # ============================================
+
 FactoryBot/ConsistentParenthesesStyle:
   Enabled: false

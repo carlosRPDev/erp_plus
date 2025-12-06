@@ -9,6 +9,9 @@ class CreateErpCoreUserAccounts < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :erp_core_user_accounts, [:user_id, :account_id], unique: true, name: "index_erp_core_user_accounts_on_user_and_account"
+    add_index :erp_core_user_accounts,
+              [:user_id, :account_id],
+              unique: true,
+              name: "index_erp_core_user_accounts_on_user_and_account"
   end
 end

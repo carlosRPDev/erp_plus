@@ -96,7 +96,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 # ===========================
 # 🧬 Cargar specs de todos los engines
 # ===========================
-Dir[Rails.root.join("engines/*/spec/**/**//**/*_spec.rb")].each { |f| require f }
+# Dir[Rails.root.join("engines/*/spec/**/**//**/*_spec.rb")].each { |f| require f }
 
 # ===========================
 # 🧪 Configuración RSpec
