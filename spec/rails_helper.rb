@@ -82,7 +82,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 # ===========================
-# 🔧 configuracion para usar assing
+# 🔧 configuración para usar assign
 # ===========================
 require "rails-controller-testing"
 Rails::Controller::Testing.install
