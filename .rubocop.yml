@@ -17,7 +17,8 @@
 # ============================================
 
 # Ignora configuraciones de RuboCop dentro de mini_mime
-inherit_gem: {}
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
 
 inherit_from:
   - .rubocop_todo.yml
