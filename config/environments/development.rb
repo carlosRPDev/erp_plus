@@ -83,7 +83,7 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 
   # 👇 Añadimos soporte a todos los engines automáticamente (Rails 8+ friendly)
-  Dir[Rails.root.join('engines/*/app/{views,assets,javascript,controllers}')].each do |engine_path|
+  Rails.root.glob('engines/*/app/{views,assets,javascript,controllers}') do |engine_path|
     config.hotwire_livereload.listen_paths << engine_path
   end
 

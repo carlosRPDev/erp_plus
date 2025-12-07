@@ -91,7 +91,9 @@ Rails::Controller::Testing.install
 # 🔧 Soporte adicional
 # ===========================
 # Requiere automáticamente archivos en spec/support
-Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb') do |f|
+  require f
+end
 
 # ===========================
 # 🧬 Cargar specs de todos los engines
@@ -146,7 +148,7 @@ RSpec.configure do |config|
 
   FactoryBot.definition_file_paths = [
     Rails.root.join('spec/factories'),
-    *Dir[Rails.root.join('engines/*/spec/factories')]
+    *Rails.root.glob('engines/*/spec/factories')
   ]
   FactoryBot.find_definitions
 end
