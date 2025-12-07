@@ -1,22 +1,8 @@
-# Omakase Ruby styling for Rails
-# inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# =====================================================
+# RUBOCOP CONFIG PARA RAILS 8 + ENGINES + FULL STACK
+# Carlos — versión optimizada
+# =====================================================
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
-
-# ============================================
-# RuboCop Config para Rails 8 + ViewComponent
-# Basado en Omakase + mejoras modernas
-# ============================================
-
-# ============================================
-# RUBOCOP CONFIG PARA RAILS 8 + ENGINES
-# ============================================
-
-# Ignora configuraciones de RuboCop dentro de mini_mime
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
 
@@ -27,47 +13,87 @@ plugins:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-factory_bot
+  - rubocop-performance
 
-# ============================================
-# ARCHIVOS GENERALES
-# ============================================
+# =====================================================
+# SETTINGS GENERALES
+# =====================================================
+
 AllCops:
   UseCache: true
   NewCops: enable
   TargetRubyVersion: 3.3
   SuggestExtensions: false
+  DisplayStyleGuide: true
+
   Exclude:
+    # Infraestructura estándar
     - "bin/*"
-    - "db/schema.rb"
-    - "db/seeds.rb"
     - "node_modules/**/*"
     - "vendor/**/*"
     - "tmp/**/*"
+    - "log/**/*"
+
+    # Rails DB
+    - "db/schema.rb"
+    - "db/seeds.rb"
+    - "db/migrate/**/*"
+
+    # Engines: infraestructura que NO debe ser analizada
     - "engines/**/node_modules/**/*"
-    - "engines/**/tmp/**/*"
     - "engines/**/vendor/**/*"
+    - "engines/**/tmp/**/*"
+    - "engines/**/db/migrate/**/*"
 
-  DisplayStyleGuide: true
+    # Coverage, almacenamiento, cachés
+    - "coverage/**/*"
+    - "storage/**/*"
 
-# ============================================
-# VIEW COMPONENTS
-# ============================================
+# =====================================================
+# STYLE / LAYOUT
+# =====================================================
+
+Layout/LineLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 25
+  Exclude:
+    - "app/javascript/controllers/**/*"
 
 Metrics/ClassLength:
+  Max: 300
   Exclude:
     - "app/components/**/*"
 
 Metrics/BlockLength:
   Exclude:
-    - "app/components/**/*.html.slim"
-    - "app/views/**/*.html.slim"
+    - "app/views/**/*.html.*"
+    - "app/components/**/*.html.*"
+    - "spec/**/*"
+    - "test/**/*"
 
-Layout/LineLength:
-  Max: 120
+Metrics/AbcSize:
+  Max: 50
 
-# ============================================
-# RAILS MODERNOS (8, Hotwire, Solid, etc.)
-# ============================================
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+# =====================================================
+# RAILS — Config para Rails 8 moderno
+# =====================================================
 
 Rails:
   Enabled: true
@@ -90,43 +116,18 @@ Rails/EnumHash:
 Rails/OutputSafety:
   Enabled: true
 
-# ============================================
-# RUBY MODERNO
-# ============================================
+Rails/RequestReferer:
+  Enabled: true
 
-Metrics/MethodLength:
-  Max: 25
-
-Metrics/AbcSize:
-  Max: 50
-
-Style/StringLiterals:
-  EnforcedStyle: single_quotes
-
-Style/StringLiteralsInInterpolation:
-  EnforcedStyle: single_quotes
-
-Style/Documentation:
-  Enabled: false
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Style/ClassAndModuleChildren:
-  Enabled: false
-
-Naming/MethodParameterName:
-  Enabled: false
-
-# ============================================
-# RSpec
-# ============================================
+# =====================================================
+# RSpec — configuración para proyectos grandes
+# =====================================================
 
 RSpec:
   Enabled: true
 
 RSpec/ExampleLength:
-  Max: 12
+  Max: 15
 
 RSpec/MultipleExpectations:
   Max: 5
@@ -134,12 +135,28 @@ RSpec/MultipleExpectations:
 RSpec/NestedGroups:
   Max: 4
 
+RSpec/AnyInstance:
+  Enabled: false
+
 RSpec/EmptyExampleGroup:
   Enabled: false
 
-# ============================================
-# FACTORY BOT
-# ============================================
+# =====================================================
+# FactoryBot — limpio y moderno
+# =====================================================
 
-FactoryBot/ConsistentParenthesesStyle:
-  Enabled: false
+FactoryBot:
+  Enabled: true
+
+FactoryBot/AttributeDefinedStatically:
+  Enabled: true
+
+FactoryBot/FactoryClassName:
+  Enabled: true
+
+# =====================================================
+# PERFORMANCE COP (Opcional pero recomendado)
+# =====================================================
+
+Performance:
+  Enabled: true

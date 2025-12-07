@@ -5,7 +5,7 @@ require "faker"
 Faker::Config.locale = 'es'
 
 RSpec.configure do |config|
-  config.before(:each) do
+  config.before do
     # Asegura que Faker sea determinista si lo deseas
     Faker::Config.random = Random.new(42)
   end

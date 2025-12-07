@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -40,8 +40,8 @@ module ErpPlus
         ActionMailer::Base.delivery_method = :letter_opener_web
         ActionMailer::Base.delivery_method = :letter_opener
         ActionMailer::Base.perform_deliveries = true
-        ActionMailer::Base.default_url_options = { host: "localhost", port: 3000 }
-        ActionMailer::Base.default from: "no-reply@erpplusclientes.com"
+        ActionMailer::Base.default_url_options = { host: 'localhost', port: 3000 }
+        ActionMailer::Base.default from: 'no-reply@erpplusclientes.com'
       end
     end
   end

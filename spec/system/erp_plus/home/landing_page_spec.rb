@@ -1,23 +1,31 @@
 require "rails_helper"
 
 RSpec.describe "Landing Page", type: :system do
+  before { visit root_path }
 
-  it "muestra el título correcto y elementos principales" do
-    visit root_path
+  describe "UI elements" do
+    it "shows the correct page title" do
+      expect(page).to have_title("Erp Plus")
+    end
 
-    expect(page).to have_title("Erp Plus")
+    it "shows the main heading" do
+      expect(page).to have_selector("h1", text: "Gestiona tu negocio con ERP+")
+    end
 
-    expect(page).to have_selector("h1", text: "Gestiona tu negocio con ERP+")
-    expect(page).to have_selector("span", text: "ERP+")
-    expect(page).to have_selector("a", text: "Inicio")
-    expect(page).to have_selector("a", text: "Productos")
-    expect(page).to have_selector("a", text: "Nosotros")
-    expect(page).to have_selector("a", text: "Contacto")
-    expect(page).to have_selector("a", text: "Iniciar sesión")
+    it "shows the brand name in the hero section" do
+      expect(page).to have_selector("span", text: "ERP+")
+    end
+
+    it "shows the main navigation links" do
+      expect(page).to have_selector("a", text: "Inicio")
+      expect(page).to have_selector("a", text: "Productos")
+      expect(page).to have_selector("a", text: "Nosotros")
+      expect(page).to have_selector("a", text: "Contacto")
+      expect(page).to have_selector("a", text: "Iniciar sesión")
+    end
   end
 
   it "navega a la página de Nosotros desde el enlace" do
-    visit root_path
     click_link "Nosotros"
 
     expect(page).to have_current_path("/about", ignore_query: true)

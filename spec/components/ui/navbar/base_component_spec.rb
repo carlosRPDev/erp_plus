@@ -8,9 +8,10 @@ RSpec.describe Ui::Navbar::BaseComponent, type: :component do
   include ErpCore::Engine.routes.url_helpers
 
   before do
-    # Stub rutas de la app principal
-    allow(self).to receive(:root_path).and_return("/")
-    allow(self).to receive(:about_path).and_return("/about")
+    allow(self).to receive_messages(
+      root_path: "/",
+      about_path: "/about"
+    )
   end
 
   describe "render" do
@@ -24,7 +25,7 @@ RSpec.describe Ui::Navbar::BaseComponent, type: :component do
       expect(component.css("a[href='/']").first).to be_present
     end
 
-    context "desktop menu" do
+    context "when the display desktop menu" do
       it "renders Inicio link" do
         expect(component.css("ul.hidden.md\\:flex a[href='/']").text).to eq("Inicio")
       end
@@ -47,7 +48,7 @@ RSpec.describe Ui::Navbar::BaseComponent, type: :component do
       end
     end
 
-    context "mobile" do
+    context "when the display mobile menu" do
       it "renders Inicio link" do
         expect(component.css("ul#mobile-menu a[href='/']").text).to eq("Inicio")
       end

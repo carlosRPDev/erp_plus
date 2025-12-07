@@ -3,20 +3,16 @@
 require "rails_helper"
 
 RSpec.describe Home::Index::Cta::BaseComponent, type: :component do
-  let(:title)         { "Título personalizado" }
-  let(:subtitle)      { "Subtítulo personalizado" }
-  let(:primary_url)   { "/signup" }
-  let(:secondary_url) { "/demo" }
-
-  let(:component) do
-    described_class.new(
-      title: title,
-      subtitle: subtitle,
-      primary_url: primary_url,
-      secondary_url: secondary_url
-    )
+  let(:params) do
+    {
+      title: "Título personalizado",
+      subtitle: "Subtítulo personalizado",
+      primary_url: "/signup",
+      secondary_url: "/demo"
+    }
   end
 
+  let(:component) { described_class.new(**params) }
   let(:rendered) { render_inline(component) }
 
   describe "render" do
@@ -25,20 +21,20 @@ RSpec.describe Home::Index::Cta::BaseComponent, type: :component do
     end
 
     it "renders the title" do
-      expect(rendered.text).to include(title)
+      expect(rendered.text).to include(params[:title])
     end
 
     it "renders the subtitle" do
-      expect(rendered.text).to include(subtitle)
+      expect(rendered.text).to include(params[:subtitle])
     end
 
     it "renders the primary button with the correct URL" do
-      primary_btn = rendered.css("a[href='#{primary_url}']").first
+      primary_btn = rendered.css("a[href='#{params[:primary_url]}']").first
       expect(primary_btn.text).to eq("Comenzar prueba gratuita")
     end
 
     it "renders the secondary button with the correct URL" do
-      secondary_btn = rendered.css("a[href='#{secondary_url}']").first
+      secondary_btn = rendered.css("a[href='#{params[:secondary_url]}']").first
       expect(secondary_btn.text).to eq("Solicitar demo")
     end
 

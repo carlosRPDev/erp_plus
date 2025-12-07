@@ -6,12 +6,12 @@ RSpec.describe Home::About::Values::BaseComponent, type: :component do
   describe "#initialize" do
     it "sets @alternate by default" do
       component = described_class.new
-      expect(component.instance_variable_get(:@alternate)).to eq(true)
+      expect(component.instance_variable_get(:@alternate)).to be(true)
     end
 
     it "allows overriding @alternate" do
       component = described_class.new(alternate: false)
-      expect(component.instance_variable_get(:@alternate)).to eq(false)
+      expect(component.instance_variable_get(:@alternate)).to be(false)
     end
   end
 
