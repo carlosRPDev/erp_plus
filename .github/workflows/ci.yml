@@ -114,3 +114,10 @@ jobs:
           name: screenshots
           path: tmp/screenshots
           if-no-files-found: ignore
+
+      - name: Upload Capybara screenshots
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: capybara-screenshots
+          path: tmp/capybara

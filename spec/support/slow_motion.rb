@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-return if ENV["CI"] == "true"
-
 module SlowMotion
   def slow_motion_sleep
+    return if ENV["CI"] == "true"
     sleep(ENV.fetch("SLOW_MO", 0).to_f)
   end
 

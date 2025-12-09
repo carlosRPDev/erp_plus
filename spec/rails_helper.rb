@@ -91,9 +91,10 @@ Rails::Controller::Testing.install
 # 🔧 Soporte adicional
 # ===========================
 # Requiere automáticamente archivos en spec/support
-Rails.root.glob('spec/support/**/*.rb') do |f|
-  require f
-end
+# Rails.root.glob('spec/support/**/*.rb') do |f|
+#   require f
+# end
+Rails.root.glob('spec/support/**/*.rb').sort.each { |f| require f }
 
 # ===========================
 # 🧬 Cargar specs de todos los engines
