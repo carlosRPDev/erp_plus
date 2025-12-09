@@ -93,8 +93,7 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
         run: |
-          bin/rails test
-          bin/rails test:system
+          bundle exec rspec
 
       - name: Upload screenshots on failure
         uses: actions/upload-artifact@v4
