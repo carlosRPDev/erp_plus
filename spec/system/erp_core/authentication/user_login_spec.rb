@@ -5,7 +5,8 @@ RSpec.describe "User Login", type: :system do
 
   it "permite iniciar sesión correctamente" do
     login_as(user)
-
+    Rails.logger.debug page.current_path
+    Rails.logger.debug page.html
     expect(page).to have_text("Ingresó a Erp+ Clientes con éxito.")
     expect(page).to have_current_path("/clients/home", ignore_query: true)
   end

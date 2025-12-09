@@ -2,7 +2,7 @@
 
 require "capybara/rspec"
 
-Capybara.default_max_wait_time = 5
+Capybara.default_max_wait_time = ENV["CI"] ? 10 : 5
 Capybara.server = :puma, { Silent: true }
 
 RSpec.configure do |config|

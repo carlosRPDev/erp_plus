@@ -91,11 +91,6 @@ jobs:
       
       - name: Export Chrome paths
         run: |
-          echo "CHROME_BIN=$(which chrome)" >> $GITHUB_ENV
-          echo "CHROMEWEBDRIVER=$HOME/.cache/selenium" >> $GITHUB_ENV
-
-      - name: Export Chrome paths
-        run: |
           echo "CHROME_BIN=$(which google-chrome)" >> $GITHUB_ENV
           echo "CHROMEWEBDRIVER=$(which chromedriver)" >> $GITHUB_ENV
       
