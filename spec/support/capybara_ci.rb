@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-if ENV["CI"] == "true"
+if ENV["CI"]
   module Capybara
     class Session
       def save_and_open_page(*)

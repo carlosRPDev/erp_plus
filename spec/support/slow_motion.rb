@@ -2,7 +2,7 @@
 
 module SlowMotion
   def slow_motion_sleep
-    return if ENV["CI"] == "true"
+    return if ENV["CI"]
     sleep(ENV.fetch("SLOW_MO", 0).to_f)
   end
 
@@ -28,4 +28,3 @@ module SlowMotion
 end
 
 Capybara::Session.prepend(SlowMotion)
-
