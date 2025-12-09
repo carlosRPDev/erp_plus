@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-if ENV["CI"]
+if ENV["CI"] == "true"
   module Capybara
     class << self
       def save_and_open_page(_path)
@@ -25,4 +25,8 @@ if ENV["CI"]
   end
   Capybara.javascript_driver = :selenium_chrome_headless_ci
   Capybara.default_driver    = :selenium_chrome_headless_ci
+
+  Capybara.configure do |config|
+    config.server = :puma, { Silent: true }  # igual que en local
+  end
 end

@@ -7,6 +7,8 @@ Capybara.server = :puma, { Silent: true }
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
+    next if ENV["CI"]
+
     driven_by :selenium_chrome do |options|
       options.add_argument("--window-size=1400,900")
       options.add_argument("--disable-gpu")

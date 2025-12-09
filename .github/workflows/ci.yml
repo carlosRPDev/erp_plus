@@ -88,9 +88,11 @@ jobs:
       
       - name: Install Chrome
         uses: browser-actions/setup-chrome@v1
-
-      - name: Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
+      
+      - name: Export Chrome paths
+        run: |
+          echo "CHROME_BIN=$(which chrome)" >> $GITHUB_ENV
+          echo "CHROMEWEBDRIVER=$HOME/.cache/selenium" >> $GITHUB_ENV
 
       - name: Export Chrome paths
         run: |
