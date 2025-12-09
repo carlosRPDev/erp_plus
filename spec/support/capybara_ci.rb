@@ -2,13 +2,13 @@
 
 if ENV["CI"] == "true"
   module Capybara
-    class << self
-      def save_and_open_page(_path)
-        # no-op en CI
+    class Session
+      def save_and_open_page(*)
+        # no-op
       end
 
-      def save_and_open_screenshot(_path)
-        # no-op en CI
+      def save_and_open_screenshot(*)
+        # no-op
       end
     end
   end
@@ -23,10 +23,11 @@ if ENV["CI"] == "true"
 
     Capybara::Selenium::Driver.new(app, browser: :chrome, options:)
   end
+
   Capybara.javascript_driver = :selenium_chrome_headless_ci
   Capybara.default_driver    = :selenium_chrome_headless_ci
 
   Capybara.configure do |config|
-    config.server = :puma, { Silent: true }  # igual que en local
+    config.server = :puma, { Silent: true }
   end
 end
