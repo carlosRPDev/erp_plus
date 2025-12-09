@@ -91,6 +91,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rails-controller-testing'
+  gem "capybara-screenshot"
 end
 
 gem 'erp_core', path: 'engines/erp_core'
