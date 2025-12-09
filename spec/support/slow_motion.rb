@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+return if ENV["CI"] == "true"
+
 module SlowMotion
   def slow_motion_sleep
     sleep(ENV.fetch("SLOW_MO", 0).to_f)
@@ -25,3 +29,4 @@ module SlowMotion
 end
 
 Capybara::Session.prepend(SlowMotion)
+
