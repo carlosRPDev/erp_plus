@@ -9,11 +9,14 @@ jobs:
   scan_ruby:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
       - run: rm -f .bundle/config
 
-      - uses: ruby/setup-ruby@v1.220.0
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
           bundler-cache: false
@@ -25,11 +28,14 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
       - run: rm -f .bundle/config
 
-      - uses: ruby/setup-ruby@v1.220.0
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
           bundler-cache: false
@@ -61,15 +67,15 @@ jobs:
       CI: "true"
 
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
 
-      - uses: ruby/setup-ruby@v1.220.0
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
+          bundler-cache: false
 
       - name: Reset bundler settings
         run: |
@@ -81,10 +87,10 @@ jobs:
         run: bundle install --jobs 4 --retry 3
       
       - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1.7.0
+        uses: browser-actions/setup-chrome@v1
 
       - name: Install ChromeDriver
-        uses: nanasess/setup-chromedriver@v2.1.0
+        uses: nanasess/setup-chromedriver@v2
 
       - name: Export Chrome paths
         run: |
