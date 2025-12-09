@@ -10,9 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
-      - name: Remove Bundler config
-        run: rm -f .bundle/config
+      - run: rm -f .bundle/config
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -27,9 +29,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
-      - name: Remove Bundler config
-        run: rm -f .bundle/config
+      - run: rm -f .bundle/config
 
       - uses: ruby/setup-ruby@v1
         with:
@@ -59,9 +63,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
 
-      - name: Remove Bundler config
-        run: rm -f .bundle/config
+      - run: rm -f .bundle/config
 
       - uses: ruby/setup-ruby@v1
         with:
