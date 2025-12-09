@@ -1,17 +1,13 @@
 # frozen_string_literal: true
 
-if ENV["CI"] == "true"
-  require "capybara-screenshot/rspec"
+return unless ENV["CI"]
 
-  module Capybara
-    module Screenshot
-      class Saver
-        def open_file(file_path)
-          # No hace nada en CI
-        end
-      end
+module Capybara
+  module ScreenshotOpener
+    def open_file(path)
+      # no-op
     end
   end
-
-  Capybara::Screenshot.prune_strategy = :keep_last_run
 end
+
+Capybara.extend Capybara::ScreenshotOpener
