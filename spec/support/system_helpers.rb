@@ -19,8 +19,4 @@ end
 
 RSpec.configure do |config|
   config.include SystemHelpers, type: :system
-
-  config.before(:each, type: :system) do
-    driven_by :selenium_chrome_headless_ci
-  end
 end
