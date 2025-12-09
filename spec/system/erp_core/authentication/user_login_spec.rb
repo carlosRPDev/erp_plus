@@ -12,5 +12,8 @@ RSpec.describe "User Login", type: :system do
     )
 
     expect(page).to have_current_path("/clients/home", ignore_query: true)
+
+    puts page.current_path
+    puts page.html
   end
 end
