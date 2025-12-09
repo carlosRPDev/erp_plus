@@ -17,8 +17,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
-          bundler: default
+          bundler-cache: false
+          bundler: 2.7.2
 
       - name: Brakeman scan (non-blocking)
         run: bin/brakeman --no-pager -q -z || true
@@ -34,8 +34,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
-          bundler: default
+          bundler-cache: false
+          bundler: 2.7.2
 
       - name: Rubocop
         run: bin/rubocop -f github || true
@@ -66,8 +66,8 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
-          bundler-cache: true
-          bundler: default
+          bundler-cache: false
+          bundler: 2.7.2
 
       - name: Prepare database
         env:
