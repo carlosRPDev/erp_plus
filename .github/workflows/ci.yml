@@ -86,7 +86,7 @@ jobs:
         run: bundle install --jobs 4 --retry 3
 
       - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
+        uses: browser-actions/setup-chrome@v2
 
       - name: Export Chrome paths
         run: |
