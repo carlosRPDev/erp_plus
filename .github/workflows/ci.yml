@@ -101,6 +101,9 @@ jobs:
       - name: assets precompiler tailwind
         run: bin/rails assets:precompile
 
+      - name: Clean previous coverage
+        run: rm -rf coverage
+
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
