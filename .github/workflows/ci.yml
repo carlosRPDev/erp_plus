@@ -98,6 +98,9 @@ jobs:
         env:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
         run: bin/rails db:prepare
+      
+      - name: assets precompiler tailwind
+        run: bin/rails assets:precompile
 
       - name: Run tests
         env:
