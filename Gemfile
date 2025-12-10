@@ -70,6 +70,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 7.0'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
+  gem 'simplecov-json', require: false
 end
 
 group :development do

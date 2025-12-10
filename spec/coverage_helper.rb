@@ -2,6 +2,7 @@
 
 require 'simplecov'
 require 'simplecov-console'
+require "simplecov-json"
 
 SimpleCov.start 'rails' do
   enable_coverage :branch
@@ -16,5 +17,6 @@ end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
   SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::Console
+  SimpleCov::Formatter::Console,
+  SimpleCov::Formatter::JSONFormatter
 ])
