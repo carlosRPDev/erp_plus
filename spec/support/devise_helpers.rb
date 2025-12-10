@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module DeviseRequestSpecHelpers
   def sign_in(user)
     post erp_core.user_session_path, params: {

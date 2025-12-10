@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.after(:each, type: :system) do |example|
     if example.exception.present?

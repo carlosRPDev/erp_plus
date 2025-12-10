@@ -2,38 +2,7 @@
 # ===========================
 # 🚀 SimpleCov (Coverage)
 # ===========================
-require 'simplecov'
-require 'simplecov-console'
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::Console
-])
-
-SimpleCov.minimum_coverage 90
-SimpleCov.minimum_coverage_by_file 80
-
-SimpleCov.start 'rails' do
-  add_filter '/spec/'
-  add_filter '/config/'
-  add_filter '/vendor/'
-  add_filter '/bin/'
-  add_filter '/db/'
-  add_filter '/app/channels/'
-  add_filter '/app/helpers/'
-
-  # Archivos Rails base sin lógica
-  add_filter '/app/jobs/application_job.rb'
-  add_filter '/app/models/application_record.rb'
-  add_filter '/app/mailers/application_mailer.rb'
-  add_filter '/app/controllers/application_controller.rb'
-
-  add_group 'Models', 'app/models'
-  add_group 'Controllers', 'app/controllers'
-  add_group 'Components', 'app/components'
-  add_group 'Jobs', 'app/jobs'
-  add_group 'Mailers', 'app/mailers'
-end
+require_relative 'coverage_helper'
 
 puts "🔥 SimpleCov iniciado"
 
@@ -45,7 +14,7 @@ require "view_component/test_helpers"
 # ===========================
 # ⚙️ Configuración Rails/RSpec
 # ===========================
-require 'spec_helper'
+# require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -54,6 +23,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 # that will avoid rails generators crashing because migrations haven't been run yet
 # return unless Rails.env.test?
 require 'rspec/rails'
+require "rails-controller-testing"
+
+Rails::Controller::Testing.install
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -69,7 +41,8 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+Rails.root.glob('spec/support/**/*.rb').sort_by(&:to_s).each { |f| require f }
+# Rails.root.glob('spec/support/**/*.rb').sort.each { |f| require f }
 
 # Ensures that the test database schema matches the current schema file.
 # If there are pending migrations it will invoke `db:test:prepare` to
@@ -80,26 +53,6 @@ begin
 rescue ActiveRecord::PendingMigrationError => e
   abort e.to_s.strip
 end
-
-# ===========================
-# 🔧 configuración para usar assign
-# ===========================
-require "rails-controller-testing"
-Rails::Controller::Testing.install
-
-# ===========================
-# 🔧 Soporte adicional
-# ===========================
-# Requiere automáticamente archivos en spec/support
-# Rails.root.glob('spec/support/**/*.rb') do |f|
-#   require f
-# end
-Rails.root.glob('spec/support/**/*.rb').sort.each { |f| require f }
-
-# ===========================
-# 🧬 Cargar specs de todos los engines
-# ===========================
-# Dir[Rails.root.join("engines/*/spec/**/**//**/*_spec.rb")].each { |f| require f }
 
 # ===========================
 # 🧪 Configuración RSpec

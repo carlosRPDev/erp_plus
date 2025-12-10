@@ -46,79 +46,51 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-      
-    env:
-      RAILS_ENV: test
-      CI: true
 
     services:
       postgres:
-        image: postgres
+        image: postgres:15
         env:
-          POSTGRES_USER: postgres
+          POSTGRES_DB: erp_test
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test_db
+          POSTGRES_USER: postgres
         ports:
-          - 5432:5432
+          - "5432:5432"
         options: >-
           --health-cmd "pg_isready -U postgres"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=3
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
       - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v2
         with:
-          fetch-depth: 0
-          submodules: recursive
+          ruby-version: "3.3"
+          bundler-cache: true
 
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: .ruby-version
-          bundler-cache: false
-
-      - name: Reset bundler settings
+      - name: Install system deps
         run: |
-          rm -f .bundle/config || true
-          bundle config set clean 'true'
-          bundle config set path 'vendor/bundle'
+          sudo apt-get update
+          sudo apt-get install -y libvips
 
-      - name: Install gems
-        run: bundle install --jobs 4 --retry 3
-      
-      - name: Install Chrome
-        uses: browser-actions/setup-chrome@v1
-      
-      - name: Export Chrome paths
-        run: |
-          echo "CHROME_BIN=$(which google-chrome)" >> $GITHUB_ENV
-          echo "CHROMEWEBDRIVER=$(which chromedriver)" >> $GITHUB_ENV
-      
-      - name: Prepare database
+      - name: Prepare DB
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432
-        run: bin/rails db:prepare
-      
-      - name: assets precompiler tailwind
-        run: bin/rails assets:precompile
+          RAILS_ENV: test
+        run: |
+          cp config/database.yml.ci config/database.yml
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
 
       - name: Run tests
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432
+          RAILS_ENV: test
+          DISPLAY: ":99"
         run: bundle exec rspec
 
-      - name: Upload screenshots on failure
-        uses: actions/upload-artifact@v4
-        if: failure()
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
         with:
-          name: screenshots
-          path: tmp/screenshots
-          if-no-files-found: ignore
-
-      - name: Upload Capybara screenshots
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: capybara-screenshots
-          path: tmp/capybara
-          if-no-files-found: ignore
+          files: ./coverage/.resultset.json
+          fail_ci_if_error: false

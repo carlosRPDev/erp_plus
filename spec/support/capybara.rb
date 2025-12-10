@@ -18,6 +18,3 @@ RSpec.configure do |config|
     end
   end
 end
-
-# Version headless de Capybara para pruebas rápidas
-# driven_by :selenium_chrome_headless
