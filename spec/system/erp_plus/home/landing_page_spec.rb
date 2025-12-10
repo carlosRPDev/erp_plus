@@ -3,6 +3,13 @@ require "rails_helper"
 RSpec.describe "Landing Page", type: :system do
   before { visit root_path }
 
+  it "Navigate to the About Us page from the link" do
+    click_link "Nosotros"
+
+    expect(page).to have_current_path("/about", ignore_query: true)
+    expect(page).to have_selector("h1", text: "Sobre Nosotros")
+  end
+
   describe "UI elements" do
     it "shows the correct page title" do
       expect(page).to have_title("Erp Plus")
@@ -23,12 +30,5 @@ RSpec.describe "Landing Page", type: :system do
       expect(page).to have_selector("a", text: "Contacto")
       expect(page).to have_selector("a", text: "Iniciar sesión")
     end
-  end
-
-  it "navega a la página de Nosotros desde el enlace" do
-    click_link "Nosotros"
-
-    expect(page).to have_current_path("/about", ignore_query: true)
-    expect(page).to have_selector("h1", text: "Sobre Nosotros")
   end
 end
