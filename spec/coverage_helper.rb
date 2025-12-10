@@ -30,8 +30,8 @@ SimpleCov.start 'rails' do
   add_group 'ERP Users', 'engines/erp_users/app'
   add_group 'ERP Workers', 'engines/erp_workers/app'
 
-  minimum_coverage 40
-  minimum_coverage_by_file 20
+  minimum_coverage 90
+  minimum_coverage_by_file 80
 end
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
