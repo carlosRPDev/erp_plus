@@ -106,6 +106,12 @@ jobs:
           DATABASE_URL: postgres://postgres:postgres@localhost:5432
         run: bundle exec rspec
 
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
       - name: Upload screenshots on failure
         uses: actions/upload-artifact@v4
         if: failure()
@@ -121,9 +127,3 @@ jobs:
           name: capybara-screenshots
           path: tmp/capybara
           if-no-files-found: ignore
-
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          fail_ci_if_error: false
