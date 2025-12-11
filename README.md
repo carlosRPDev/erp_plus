@@ -24,3 +24,4 @@ Things you may want to cover:
 - ...
 
 [![codecov](https://codecov.io/github/carlosRPDev/erp_plus/graph/badge.svg?token=M7RBCZCH1E)](https://codecov.io/github/carlosRPDev/erp_plus)
+[![codecov](https://codecov.io/github/carlosRPDev/erp_plus/graphs/sunburst.svg?token=M7RBCZCH1E)](https://codecov.io/github/carlosRPDev/erp_plus)

@@ -14,7 +14,7 @@ require "view_component/test_helpers"
 # ===========================
 # ⚙️ Configuración Rails/RSpec
 # ===========================
-# require 'spec_helper'
+require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production

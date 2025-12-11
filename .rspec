@@ -1,4 +1,5 @@
+--require rails_helper
 --require spec_helper
+--pattern spec/**/*_spec.rb,engines/**/spec/**/*_spec.rb
 --format documentation
 --color
---pattern **/*_spec.rb
