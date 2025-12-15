@@ -3,42 +3,38 @@ coverage:
     project:
       default:
         target: 90%
+        threshold: 1%
     patch:
       default:
         target: 100%
 
 comment:
-  layout: "reach,diff,files"
+  layout: "reach,diff,flags,files"
+  behavior: default
 
 ignore:
   - "spec/**"
   - "config/**"
   - "db/**"
   - "vendor/**"
+  - "bin/**"
 
-component_management:
-  individual_components:
-    - component_id: app
-      name: App
-      paths:
-        - app
+fixes:
+  - "::"
 
-    - component_id: erp_accounts
-      name: ERP Accounts
-      paths:
-        - engines/erp_accounts/app
-
-    - component_id: erp_core
-      name: ERP Core
-      paths:
-        - engines/erp_core/app
-
-    - component_id: erp_users
-      name: ERP Users
-      paths:
-        - engines/erp_users/app
-
-    - component_id: erp_workers
-      name: ERP Workers
-      paths:
-        - engines/erp_workers/app
+flags:
+  app:
+    paths:
+      - "app/"
+  erp_accounts:
+    paths:
+      - "engines/erp_accounts/app/"
+  erp_core:
+    paths:
+      - "engines/erp_core/app/"
+  erp_users:
+    paths:
+      - "engines/erp_users/app/"
+  erp_workers:
+    paths:
+      - "engines/erp_workers/app/"
