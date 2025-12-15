@@ -115,6 +115,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/coverage.json
+          directory: ./
           fail_ci_if_error: true
 
       - name: Upload screenshots on failure
