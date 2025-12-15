@@ -13,7 +13,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
 ])
 
 SimpleCov.start 'rails' do
-  self.root(Dir.pwd)
+  root File.expand_path("../../", __FILE__)
   enable_coverage :branch
   add_filter '/spec/'
   add_filter '/config/'
@@ -34,6 +34,8 @@ SimpleCov.start 'rails' do
   add_group 'Jobs', 'app/jobs'
   add_group 'Mailers', 'app/mailers'
 
+  add_group "Engines", "engines"
+
   # add_group 'ERP Accounts', 'engines/erp_accounts/app'
   # add_group 'ERP Core', 'engines/erp_core/app'
   # add_group 'ERP Users', 'engines/erp_users/app'
@@ -42,7 +44,7 @@ SimpleCov.start 'rails' do
   minimum_coverage 90
   minimum_coverage_by_file 70
 
-  Dir.glob("engines/*").each do |engine_path|
-    add_group File.basename(engine_path), engine_path
-  end
+  # Dir.glob("engines/*").each do |engine_path|
+  #   add_group File.basename(engine_path), engine_path
+  # end
 end

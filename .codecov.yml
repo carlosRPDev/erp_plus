@@ -20,7 +20,7 @@ ignore:
   - "bin/**"
 
 fixes:
-  - "/home/runner/work/erp_plus/erp_plus/::"
+  - "engines/::engines/"
 
 component_management:
   individual_components:
