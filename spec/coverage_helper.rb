@@ -3,18 +3,17 @@
 require 'simplecov'
 require 'simplecov-console'
 require "simplecov-json"
+require_relative "support/simplecov_relative_path_formatter"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCovRelativePathFormatter,
   SimpleCov::Formatter::HTMLFormatter,
   SimpleCov::Formatter::Console,
   SimpleCov::Formatter::JSONFormatter
 ])
 
 SimpleCov.start 'rails' do
-  SimpleCov.root File.expand_path("..", __dir__)
-
   enable_coverage :branch
-
   add_filter '/spec/'
   add_filter '/config/'
   add_filter '/vendor/'
