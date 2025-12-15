@@ -2,16 +2,26 @@ coverage:
   status:
     project:
       default:
-        target: 80%
-        threshold: 1%
+        target: 90%
     patch:
       default:
-        target: 80%
+        target: 100%
 
 comment:
-  layout: "reach, diff, flags, files"
-  behavior: default
+  layout: "reach,diff,flags,files"
 
 ignore:
-  - "spec/**/*"
-  - "config/**/*"
+  - "spec/**"
+  - "config/**"
+  - "db/**"
+  - "vendor/**"
+
+fixes:
+  - "::"
+
+paths:
+  - "app/"
+  - "engines/erp_accounts/app/"
+  - "engines/erp_core/app/"
+  - "engines/erp_users/app/"
+  - "engines/erp_workers/app/"
