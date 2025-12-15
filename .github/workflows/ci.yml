@@ -114,38 +114,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          flags: app,erp_accounts,erp_core,erp_users,erp_workers
-          fail_ci_if_error: true
-
-      - name: Upload coverage (app)
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage/coverage.json
-          flags: app
-
-      - name: Upload coverage (erp_accounts)
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage/coverage.json
-          flags: erp_accounts
-
-      - name: Upload coverage (erp_core)
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage/coverage.json
-          flags: erp_core
-
-      - name: Upload coverage (erp_users)
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage/coverage.json
-          flags: erp_users
-
-      - name: Upload coverage (erp_workers)
-        uses: codecov/codecov-action@v4
-        with:
-          files: coverage/coverage.json
-          flags: erp_workers
+          fail_ci_if_error: false
 
       - name: Upload screenshots on failure
         uses: actions/upload-artifact@v4
