@@ -17,7 +17,8 @@ ignore:
   - "vendor/**"
 
 fixes:
-  - "/home/runner/work/erp_plus/::"
+  - "/Users/carlosrodriguez/Desktop/erp_plus/::"
+  - "/home/runner/work/erp_plus/erp_plus/::"
 
 component_management:
   individual_components:
@@ -25,6 +26,11 @@ component_management:
       name: App
       paths:
         - app
+
+    - component_id: erp_accounts
+      name: ERP Accounts
+      paths:
+        - engines/erp_accounts/app
 
     - component_id: erp_core
       name: ERP Core
