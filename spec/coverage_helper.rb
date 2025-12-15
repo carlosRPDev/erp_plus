@@ -43,6 +43,6 @@ SimpleCov.start 'rails' do
   minimum_coverage_by_file 70
 
   Dir.glob("engines/*").each do |engine_path|
-    add_group File.basename(engine_path).humanize, engine_path
+    add_group File.basename(engine_path), engine_path
   end
 end
