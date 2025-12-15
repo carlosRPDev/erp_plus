@@ -8,7 +8,7 @@ coverage:
         target: 100%
 
 comment:
-  layout: "reach,diff,flags,files"
+  layout: "reach,diff,files"
 
 ignore:
   - "spec/**"
@@ -18,3 +18,25 @@ ignore:
 
 fixes:
   - "/home/runner/work/erp_plus/erp_plus/::"
+
+component_management:
+  individual_components:
+    - component_id: app
+      name: App
+      paths:
+        - app
+
+    - component_id: erp_core
+      name: ERP Core
+      paths:
+        - engines/erp_core/app
+
+    - component_id: erp_users
+      name: ERP Users
+      paths:
+        - engines/erp_users/app
+
+    - component_id: erp_workers
+      name: ERP Workers
+      paths:
+        - engines/erp_workers/app
