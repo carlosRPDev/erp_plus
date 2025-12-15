@@ -19,32 +19,46 @@ ignore:
   - "vendor/**"
   - "bin/**"
 
-fixes:
-  - "::"
+flags:
+  app:
+    paths:
+      - app/
+  erp_accounts:
+    paths:
+      - engines/erp_accounts/
+  erp_core:
+    paths:
+      - engines/erp_core/
+  erp_users:
+    paths:
+      - engines/erp_users/
+  erp_workers:
+    paths:
+      - engines/erp_workers/
 
 component_management:
   individual_components:
     - component_id: app
       name: App
       paths:
-        - app
+        - app/
 
     - component_id: erp_accounts
       name: ERP Accounts
       paths:
-        - engines/erp_accounts/app
+        - engines/erp_accounts/
 
     - component_id: erp_core
       name: ERP Core
       paths:
-        - engines/erp_core/app
+        - engines/erp_core/
 
     - component_id: erp_users
       name: ERP Users
       paths:
-        - engines/erp_users/app
+        - engines/erp_users/
 
     - component_id: erp_workers
       name: ERP Workers
       paths:
-        - engines/erp_workers/app
+        - engines/erp_workers/
