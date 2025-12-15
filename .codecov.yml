@@ -16,10 +16,6 @@ ignore:
   - "db/**"
   - "vendor/**"
 
-fixes:
-  - "/Users/carlosrodriguez/Desktop/erp_plus/::"
-  - "/home/runner/work/erp_plus/erp_plus/::"
-
 component_management:
   individual_components:
     - component_id: app

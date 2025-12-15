@@ -4,8 +4,17 @@ require 'simplecov'
 require 'simplecov-console'
 require "simplecov-json"
 
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+  SimpleCov::Formatter::HTMLFormatter,
+  SimpleCov::Formatter::Console,
+  SimpleCov::Formatter::JSONFormatter
+])
+
 SimpleCov.start 'rails' do
+  SimpleCov.root File.expand_path("..", __dir__)
+
   enable_coverage :branch
+
   add_filter '/spec/'
   add_filter '/config/'
   add_filter '/vendor/'
@@ -33,9 +42,3 @@ SimpleCov.start 'rails' do
   minimum_coverage 90
   minimum_coverage_by_file 70
 end
-
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  SimpleCov::Formatter::HTMLFormatter,
-  SimpleCov::Formatter::Console,
-  SimpleCov::Formatter::JSONFormatter
-])
