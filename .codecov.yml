@@ -20,24 +20,7 @@ ignore:
   - "bin/**"
 
 fixes:
-  - "engines/::engines/"
-
-flags:
-  app:
-    paths:
-      - app/
-  erp_accounts:
-    paths:
-      - engines/erp_accounts/
-  erp_core:
-    paths:
-      - engines/erp_core/
-  erp_users:
-    paths:
-      - engines/erp_users/
-  erp_workers:
-    paths:
-      - engines/erp_workers/
+  - "/home/runner/work/erp_plus/erp_plus/::"
 
 component_management:
   individual_components:
