@@ -6,15 +6,17 @@ require "simplecov-json"
 require_relative "support/simplecov_relative_path_formatter"
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
-  # SimpleCovRelativePathFormatter,
+  SimpleCovRelativePathFormatter,
   SimpleCov::Formatter::HTMLFormatter,
   SimpleCov::Formatter::Console,
   SimpleCov::Formatter::JSONFormatter
 ])
 
+SimpleCov.root(File.expand_path("../../", __FILE__))
+
 SimpleCov.start 'rails' do
-  root File.expand_path("../../", __FILE__)
   enable_coverage :branch
+
   add_filter '/spec/'
   add_filter '/config/'
   add_filter '/vendor/'
@@ -36,15 +38,6 @@ SimpleCov.start 'rails' do
 
   add_group "Engines", "engines"
 
-  # add_group 'ERP Accounts', 'engines/erp_accounts/app'
-  # add_group 'ERP Core', 'engines/erp_core/app'
-  # add_group 'ERP Users', 'engines/erp_users/app'
-  # add_group 'ERP Workers', 'engines/erp_workers/app'
-
   minimum_coverage 90
   minimum_coverage_by_file 70
-
-  # Dir.glob("engines/*").each do |engine_path|
-  #   add_group File.basename(engine_path), engine_path
-  # end
 end

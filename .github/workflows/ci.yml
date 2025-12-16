@@ -116,8 +116,6 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/coverage.json
           fail_ci_if_error: true
-          handle_no_reports_found: true
-          flags: engines
 
       - name: Upload screenshots on failure
         uses: actions/upload-artifact@v4
